@@ -146,18 +146,18 @@ jobs:
       # with:
         # name: AX6-NSS
         # path: openwrt/bin/targets
-    # - name: mv output to upload file
-      # run: |
-        # df -hT
-        # mkdir upload
-        # cp openwrt/bin/targets/qualcommax/ipq807x/*  upload/     
+    - name: cp output to upload file
+      run: |
+        df -hT
+        mkdir upload
+        cp openwrt/bin/targets/*/*/*.ubi upload/
+        cp openwrt/bin/targets/*/*/*.bin upload/
 
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@main
-      if: ${{ env.PACKAGED_STATUS == 'success' }} && !cancelled()
       with:
         tag: A6X-NSS_${{ env.PACKAGED_OUTPUTDATE }}
-        artifacts: openwrt/bin/targets/qualcommax/ipq807x/*
+        artifacts: upload/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
