@@ -154,7 +154,7 @@ jobs:
         cp openwrt/bin/targets/*/*/*.bin upload/
         
     - name: Get Current Date
-      run: echo "CURRENT_DATE=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
+      run: echo "CURRENT_DATETIME=$(date '+%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
       
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@main
