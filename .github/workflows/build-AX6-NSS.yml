@@ -152,11 +152,14 @@ jobs:
         mkdir upload
         cp openwrt/bin/targets/*/*/*.ubi upload/
         cp openwrt/bin/targets/*/*/*.bin upload/
-
+        
+    - name: Get Current Date
+      run: echo "CURRENT_DATE=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
+      
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@main
       with:
-        tag: A6X-NSS_${{ env.PACKAGED_OUTPUTDATE }}
+        tag: AX6-NSS-${{ env.CURRENT_DATE }}
         artifacts: upload/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
