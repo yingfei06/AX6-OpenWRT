@@ -52,4 +52,4 @@ rm -rf feeds/luci/applications/openwrt-passwall
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 
 #修改主机名
-#sed -i "s/hostname='ImmortalWrt'/hostname='Redmi-AX6'/g" package/base-files/files/bin/config_generate
+sed -i "s/hostname='LibWrt'/hostname='Redmi-AX6'/g" package/base-files/files/bin/config_generate
